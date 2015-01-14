@@ -1,5 +1,5 @@
 #Introduction to the MatLab programming environment
-###Pestilli, Franco K310 Spring 2014 Indiana University Bloomington
+####Pestilli, Franco K310 Spring 2014 Indiana University Bloomington
 
 The goal of the first week is to get the student familiarized with the MatLab programming environment. You can practice the content of the tutorials using MatLab via IUAnyware (please see the Syllabus for more details, see also https://kb.iu.edu/d/bbbu for instructions).
 
