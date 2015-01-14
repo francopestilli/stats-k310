@@ -14,8 +14,8 @@ The MatLab documentation is accessible online fro free: http://www.mathworks.com
 Mathworks also hosts a portal called Matlabcentral, where files and questions can be submitted to a comunity of users: http://www.mathworks.com/matlabcentral/
 It is foten helpful to find that many of the problems we might encounter have been previosuly solved by other individuals.
 
-### Variables 
-- Command line: The MatLab interface contain several panels (see video above). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol >>.
+### The MatLab environment 
+- Command line: The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol >>.
 - Variables: Represent in the memory of the computer (RAM) numbers, strings, vectors, matrices etc. Variable have names that be a combination of letters and numbers, but that cannot start with a numer, for example, this_is_one_variable, thisIsOneVariable, ThisIs1Variable. Variable exist only as long a sMatLab is running. As soon as MatLab is turned off all variables are wiped out of memory. This is a fundamental difference between variables and scripts or functions, see below.
 - Workspace: MatLab holds all the variables created always in memory. The entirety of the variables kept in memroy is called the workspace. 
 - Functions and scripts: MatLab can store a series of commands in a file. MatLab files can be saved to disk with the extension *.m There are two fundamental 
