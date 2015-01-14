@@ -36,6 +36,6 @@ MatLab holds all the variables created always in memory. The entirety of the var
 ####Functions and scripts 
 MatLab can store a series of commands in a file on saved on your hard disk. MatLab files are saved to disk with the extension *.m There are two fundamentalfile types in MatLab.
 
- - Scripts: These are the simples form of a written set of instructions. Scripts are simple text files saved with a .m exstension. Scripts access variables in the workspace directly, meaning the if a variable called 'VAR' exist in a script it will exist also in the workspace.
+- Scripts: These are the simples form of a written set of instructions. Scripts are simple text files saved with a .m exstension. Scripts access variables in the workspace directly, meaning the if a variable called 'VAR' exist in a script it will exist also in the workspace.
 - Functions: These are files saved with the same extension as scripts (.m) but they contain slightly more advanced coding syntax. Functions have a predefined set of input and output arguments. The arguments of a function are the set of variables that the function recognizes and can operate upon. This is a fundamental difference with scripts. If a variable called VAR exist inside a function the variable does not exist in the workspace unless it is retuned as an output. The majority of the operations that we perform in matlab is performed by functions, more often functions that come with the MatLab package.
  
