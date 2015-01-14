@@ -15,23 +15,27 @@ Mathworks also hosts a portal called Matlabcentral, where files and questions ca
 It is foten helpful to find that many of the problems we might encounter have been previosuly solved by other individuals.
 
 ### The MatLab environment 
-- Command line: The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol >>.
-- Variables: Represent in the memory of the computer (RAM) numbers, strings, vectors, matrices etc. Variable have names that be a combination of letters and numbers, but that cannot start with a numer, for example:
-  this_is_one_variable, 
-  thisIsOneVariable 
-  ThisIs1Variable. 
-Variable exist only as long a sMatLab is running. As soon as MatLab is turned off all variables are wiped out of memory. This is a fundamental difference between variables and scripts or functions, see below.
-- Workspace: MatLab holds all the variables created always in memory. The entirety of the variables kept in memroy is called the workspace. 
-- Functions and scripts: MatLab can store a series of commands in a file. MatLab files can be saved to disk with the extension *.m There are two fundamental 
-- Functions accept input and return output. There are built-in functions (e.g. inv) that have no
-readable source code, functions that come with MATLAB (e.g. mean) that have readable
-source code, and user-written functions. Importantly, functions cannot access nor modify the
-workspace except through inputs and outputs.
-- Scripts are text files that consist of a series of MATLAB commands. Scripts are similar to
-user-written functions (which are also text files consisting of a series of MATLAB commands).
-However, the crucial difference is that scripts do not operate on inputs and outputs. Rather,
-scripts have direct access to the workspace, so they can freely read variables from the
-workspace and write variables to the workspace.
-- Functions and scripts written by the user are saved as .m files. These are text files.
-- MATLAB saves variables into .mat files. These are binary files that can be read by MATLAB.
+- Command line: The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol:
+```
+>>
+```
 
+####Variables 
+They represent in the memory of the computer (RAM) numbers, strings, vectors, matrices etc. Variable have names that be a combination of letters and numbers, but that cannot start with a numer, for example:
+```
+  >> this_is_one_matlab_variable = 1; 
+  >> thisIsOneMatLabVariable = 2;
+  >> ThisIs1MatLabVariable = 3;
+```
+  
+Variable exist only as long as MatLab is running. As soon as MatLab is turned off all variables are wiped out of memory. VAriables can be saved onto a file on your hard disk (the file has extension .mat) and the file can be loaded later. When the file is loaded all the variabes saved in the file will be accessible into the MatLab workspace. 
+
+####Workspace 
+MatLab holds all the variables created always in memory. The entirety of the variables kept in memroy at everyomoment is called the workspace. 
+
+####Functions and scripts 
+MatLab can store a series of commands in a file on saved on your hard disk. MatLab files are saved to disk with the extension *.m There are two fundamentalfile types in MatLab.
+
+ - Scripts: These are the simples form of a written set of instructions. Scripts are simple text files saved with a .m exstension. Scripts access variables in the workspace directly, meaning the if a variable called 'VAR' exist in a script it will exist also in the workspace.
+- Functions: These are files saved with the same extension as scripts (.m) but they contain slightly more advanced coding syntax. Functions have a predefined set of input and output arguments. The arguments of a function are the set of variables that the function recognizes and can operate upon. This is a fundamental difference with scripts. If a variable called VAR exist inside a function the variable does not exist in the workspace unless it is retuned as an output. The majority of the operations that we perform in matlab is performed by functions, more often functions that come with the MatLab package.
+ 
