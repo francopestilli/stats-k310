@@ -16,7 +16,7 @@ It is foten helpful to find that many of the problems we might encounter have be
 
 ### The MatLab environment 
 ####Command line 
-The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol:
+The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab will execute. Command line is indicated by the symbol:
 ```
 >>
 ```
