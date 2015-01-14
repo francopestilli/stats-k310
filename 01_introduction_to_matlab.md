@@ -15,13 +15,13 @@ Mathworks also hosts a portal called Matlabcentral, where files and questions ca
 It is foten helpful to find that many of the problems we might encounter have been previosuly solved by other individuals.
 
 ### The MatLab environment 
-- Command line: The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol:
+####Command line 
+The MatLab interface contains several panels (see video [above](http://www.mathworks.com/videos/getting-started-with-matlab-68985.html)). The core panel of matlab is the command line. This is the subpanel where we can type commands and MatLab wil execute. Command line is indicated by the symbol:
 ```
 >>
 ```
-
 ####Variables 
-They represent in the memory of the computer (RAM) numbers, strings, vectors, matrices etc. Variable have names that be a combination of letters and numbers, but that cannot start with a numer, for example:
+They represent in the memory of the computer (RAM) numbers, strings, vectors, matrices, etc. Variable have names that be a combination of letters and numbers, but that cannot start with a number, for example:
 ```
   >> this_is_one_matlab_variable = 1; 
   >> thisIsOneMatLabVariable = 2;
@@ -31,7 +31,7 @@ They represent in the memory of the computer (RAM) numbers, strings, vectors, ma
 Variable exist only as long as MatLab is running. As soon as MatLab is turned off all variables are wiped out of memory. VAriables can be saved onto a file on your hard disk (the file has extension .mat) and the file can be loaded later. When the file is loaded all the variabes saved in the file will be accessible into the MatLab workspace. 
 
 ####Workspace 
-MatLab holds all the variables created always in memory. The entirety of the variables kept in memroy at everyomoment is called the workspace. 
+MatLab holds all the variables created always in memory. The entirety of the variables kept in memory at every moment is called the workspace. 
 
 ####Functions and scripts 
 MatLab can store a series of commands in a file on saved on your hard disk. MatLab files are saved to disk with the extension *.m There are two fundamentalfile types in MatLab.
