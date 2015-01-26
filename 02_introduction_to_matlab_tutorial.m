@@ -3,7 +3,7 @@
 % This tutorial will show how to define variables, create a (simulated)
 % data set, plot it.
 % 
-% Pestilli, Franco K310 Spring 2014 Indiana University Bloomington
+% Pestilli, Franco K310 Spring 2015 Indiana University Bloomington
 
 %% (1) Defining a variable in the work space.
 % Please copy and paste the following lines inside the matlab command
