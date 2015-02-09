@@ -1,3 +1,4 @@
+
 %% 1. Correlation. Exploring more complex datasets: two variables, one condition
 % Hereafter, we show an example of a slightly more complex data set.
 %
@@ -12,12 +13,17 @@
 
 n = 20; % This is the size of our samples
 % We set a correlation level between the two samples.
-w = .6;  
+p = .46;  
 
 % We generate the two samples.
-s1 = randn(n,1);
-s2 = w .* s1 + (1 - w).*randn(n,1);
-
+u = randn(1,n);
+v = randn(1,n);
+m.s1  = 0; % mean deviation of the first sample
+m.s2  = 0; % mean deviation of the second sample
+sd.s1 = 1; % standard deviation of the first sample
+sd.s2 = 1; % standard deviation of the second sample
+s1 = sd.s1 * u + m.s1;
+s2 = sd.s2 * (p * u + sqrt(1 - p^2) * v) + m.s2;
 
 %% 2. Correlation formula
 %
@@ -41,9 +47,10 @@ r = sum((s1 - mean(s1))/std(s1,1) .* (s2 - mean(s2)/std(s2,1)))/n;
 % This is the version of the std that the Book Uses.
 
 % Here we show the results in a plot
-figure('name','Two correlated variables')
+figure('name','Two correlated variables','color','w')
 % scatter.m is a ueful matlab function, in this case it would be equivalent
 % to plot(s1,s2,'bo')
+subplot(1,2,1)
 scatter(s1,s2); 
 ylabel('Values in variable 2','fontsize',14)
 xlabel('Values in variable 1','fontsize',14)
@@ -54,8 +61,9 @@ x = get(gca,'xLim');
 % Please notice here we introduce a new function that allows to write text
 % on a plot. try doc text.m 
 text(x(1)+.15,y(2)*.8, ...
-    sprintf('Correlations:\nSimulated %2.2f\nEstimated %2.2f',w,r),'fontsize',14)
+    sprintf('Simulated %2.2f\nEstimated %2.2f',p,r),'fontsize',14)
 set(gca,'tickdir','out','ytick',[-1 0 1],'xtick',[-1 0 1])
+axis square
 
 %% 3. Error bars on the correlation coefficient using bootstrap.
 %
@@ -102,19 +110,25 @@ for ii = 1:k
                      (s2(index) - mean(s2(index))/std(s2(index),1)))/n;
 end
 
-% We compute the two-tailed 95% confidence intervals:
+% We copute the two-tailed 95% confidence intervals:
 ci = prctile(r_dist,[2.5,97.5]);
 
 % Now we plot the correlation we estimated with the the 95% confidence
 % intervals.
-figure('name','Errorbar on the correlation coefficient','color','w');
+subplot(1,2,2)
 plot([1 1],ci,'r-','lineWidth',3); % Plot the error on the estimate
 hold on
 plot(1,r,'ko','markeredgecolor','w','markerfacecolor','k',...
          'markersize',14,'linewidth',2); % plot a bar to indicate the etimated correlation
-ylabel('Correlation s1, s2')
+plot(1,median(r_dist),'k^','markeredgecolor','k','markerfacecolor','k',...
+         'markersize',14,'linewidth',2); % plot the mean of the distribution of correlations
+plot(.5,p,'k^','markeredgecolor','g','markerfacecolor','k',...
+         'markersize',14,'linewidth',2); % plot the true correlation
+ylabel('Correlation between s1 and s2')
 axis([0 2 0 1]); % set the limits to the current axis
 set(gca,...
     'tickdir','out','ytick',[-1 -.5 0 .5 1], ...
     'xtick',[-1 0 1],'ylim',[-1 1], ...
     'box','off','fontsize',14)
+axis square
+
