@@ -15,7 +15,7 @@
 % We can plot the Gaussian with the appropriate mean
 % and standard deviation on both histograms and see how well they fit the
 % data.
-nSamples = 200;
+nSamples = 2000;
 
 % Create a new dataset with the same values as rnd_data and a few outliers
 % horzcat simply adds the new values at the end of the vector d0sorted
@@ -28,8 +28,8 @@ med = median(rnd_data);
 % will evaluate the function. These values must span the minimum and max
 % value in the data we want to describe. We will (arbitraily) space the
 % values over whcih we evaluate the gaussian by an interval of 0.01.
-dx = 0.01;
-g.x = [min(rnd_data):dx:max(rnd_data)]; % Here we create a vector 
+g.dx = 0.01;
+g.x = [min(rnd_data):g.dx:max(rnd_data)]; % Here we create a vector 
                                         % of linearly increasing values.
 % Note that here we are introducing a structure. doc it!
 
@@ -47,6 +47,7 @@ g.x = [min(rnd_data):dx:max(rnd_data)]; % Here we create a vector
 % Note that we are using sd and m from the data set above called
 % rnd_data.
 for ii = 1:length(g.x) % For each element in x perform the operations before 'end'
+    % exp(x) = e^x
     g.y(ii) = (1 / (sd*sqrt(2*pi))) * exp(-((g.x(ii)-m)^2)/(2*sd^2));
 end
 
@@ -56,7 +57,7 @@ end
 % 
 % The dot operators perform arithmetic element-wise and they are useful for
 % writing vectorized code.  So remember .* is different from *
-g.y = (1 / (sd*sqrt(2*pi))) * exp(-((g.x-m).^2)/(2*sd^2));
+g.ym = (1 / (sd*sqrt(2*pi))) * exp(-((g.x-m).^2)/(2*sd^2));
 
 % Now we will open a new figure window and plot the gaussian over the
 % histogram
@@ -91,7 +92,7 @@ bar(h.x,h.yprob,'k');
 % Now we plot a line with the calculated height of the gaussian, y, for
 % each value, x.
 plot(g.x,g.y,'-r','linewidth',4);
-ylabel('Frequency')
+ylabel('Probability')
 xlabel('Value of data in sample')
 set(gca,'xlim',[-3 3], 'tickdir','out', ...
     'ytick',[0 .2 .4 .6], ...
@@ -122,7 +123,7 @@ figure('name','Gaussian distribution outliers', 'color','w');
 hold on;
 bar(h.x,h.yprob,'k');
 plot(g.x,g.y,'-r','linewidth',4);
-ylabel('Frequency')
+ylabel('Probability')
 xlabel('Value of data in sample')
 set(gca,'xlim',[-10 60], 'tickdir','out', ...
     'ytick',[0 .1 .2], ...
@@ -133,14 +134,14 @@ set(gca,'xlim',[-10 60], 'tickdir','out', ...
 % Here ater we will plot a line and make a few examples of their slopes
 
 % Define the equation of a line
-x = linspace(-5,5,10);% Please study the help of the new function 'linspace'
-slopes = [2 1 1.5];
-intercepts = [2 1 2];
+line.x = linspace(-5,5,10);% Please study the help of the new function 'linspace'
+line.slopes = [2 1 1.5];
+line.intercepts = [2 1 2];
 
 % We loop over each slope and intercept and compute the values for the
 % line. We store them into a variabile and plot them later on
-for ii = 1:length(slopes)
-    y(ii,:) = slopes(ii).*x + intercepts(ii);
+for ii = 1:length(line.slopes)
+    line.y(ii,:) = line.slopes(ii).*line.x + line.intercepts(ii);
 end
 
 % We now prepare colors and line properties for each line
@@ -153,8 +154,8 @@ end
 % can contains multiple types of variables, numbers or characters, for
 % example. The filed linewdth is a numeric vector. How do you recognize a
 % cell array from a numeric array? The curly parenthesis {} vs. [].
-property.color     = {'r-','b-','g-'}; 
-property.linewidth = [2 1 4];
+line.color     = {'r-','b-','g-'}; 
+line.linewidth = [2 1 4];
 
 % We open a window where we will plot the lines
 figure('name','Lines!','color','w');
@@ -162,12 +163,12 @@ hold on
 
 % We plot one line at the time
 for ii = 1:length(slopes)
-    plot(x,y(ii,:),property.color{ii},'linewidth',property.linewidth(ii))
+    plot(line.x,line.y(ii,:),line.color{ii},'linewidth',line.linewidth(ii))
 end
 
 % Lets add axis going through the center of the coordiante frame (0,0)
 plot([0 0],[-10 10],'k--')
 plot([-10 10],[0 0],'k--')
-set(gca,'tickdir','out','box','off','fontsize',14)
-legend({'Red line','Blue line','Green line'},'box', 'off','location','southeast');
+set(gca,'tickdir','out','box','off','fontsize',24)
+legend({'Red line (i=2,s=2)','Blue line (i=1,1)','Green line (i=1.5,s=2)'},'box', 'off','location','southeast');
 
