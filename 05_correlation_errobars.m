@@ -1,4 +1,3 @@
-
 %% 1. Correlation. Exploring more complex datasets: two variables, one condition
 % Hereafter, we show an example of a slightly more complex data set.
 %
@@ -11,9 +10,9 @@
 % Let's generate two samples rapresenting two variables drawn from gaussian
 % distributions. The two variables are correlated with eachother. 
 
-n = 20; % This is the size of our samples
+n = 30; % This is the size of our samples
 % We set a correlation level between the two samples.
-p = .46;  
+p = .75;  
 
 % We generate the two samples.
 u = randn(1,n);
@@ -35,7 +34,8 @@ s2 = sd.s2 * (p * u + sqrt(1 - p^2) * v) + m.s2;
 % indicates a perfect positive linear relationship. (Note that we are
 % using Pearson's product-moment correlation, but there are other variants
 % of correlation.)
-r = sum((s1 - mean(s1))/std(s1,1) .* (s2 - mean(s2)/std(s2,1)))/n;
+tmp = corrcoef(s1,s2); % MatLab has a formula for correlations
+r   = tmp(1,2);
 
 % In words, we z-score each variable (subtract off the mean, divide by the
 % standard deviation) and then compute the average product of the
@@ -57,11 +57,10 @@ xlabel('Values in variable 1','fontsize',14)
 
 % We display the simulted and computed correlations at 80% the max y-value.
 y = get(gca,'yLim');
-x = get(gca,'xLim');
 % Please notice here we introduce a new function that allows to write text
 % on a plot. try doc text.m 
-text(x(1)+.15,y(2)*.8, ...
-    sprintf('Simulated %2.2f\nEstimated %2.2f',p,r),'fontsize',14)
+text(0,y(2)-.2, ...
+    sprintf('Simulated %2.2f\nEstimated %2.2f\n',p,r),'fontsize',14)
 set(gca,'tickdir','out','ytick',[-1 0 1],'xtick',[-1 0 1])
 axis square
 
@@ -100,14 +99,14 @@ axis square
 % value will be different.
 % 
 % We then compute the correlation coefficient with each sample.
-k = 2000; % number of randomizations
+k = 10000; % number of randomizations, normally numbers must be more 1000
 r_dist = zeros(k,1);
 for ii = 1:k
  % Notice that we resample index and we use the same indexes to address
  % both samples. otherwise we lose the correaltion value. 
- index = randsample(1:n,n,1);
- r_dist(ii)    = sum((s1(index) - mean(s1(index)))/std(s1(index),1) .* ...
-                     (s2(index) - mean(s2(index))/std(s2(index),1)))/n;
+ index      = randsample(1:n,n,1);
+ tmp        = corrcoef(s1(index),s2(index));
+ r_dist(ii) = tmp(2,1);
 end
 
 % We copute the two-tailed 95% confidence intervals:
@@ -118,17 +117,18 @@ ci = prctile(r_dist,[2.5,97.5]);
 subplot(1,2,2)
 plot([1 1],ci,'r-','lineWidth',3); % Plot the error on the estimate
 hold on
-plot(1,r,'ko','markeredgecolor','w','markerfacecolor','k',...
-         'markersize',14,'linewidth',2); % plot a bar to indicate the etimated correlation
-plot(1,median(r_dist),'k^','markeredgecolor','k','markerfacecolor','k',...
-         'markersize',14,'linewidth',2); % plot the mean of the distribution of correlations
 plot(.5,p,'k^','markeredgecolor','g','markerfacecolor','k',...
          'markersize',14,'linewidth',2); % plot the true correlation
-ylabel('Correlation between s1 and s2')
-axis([0 2 0 1]); % set the limits to the current axis
-set(gca,...
-    'tickdir','out','ytick',[-1 -.5 0 .5 1], ...
-    'xtick',[-1 0 1],'ylim',[-1 1], ...
+plot(1,r,'ko','markeredgecolor','w','markerfacecolor','k',...
+         'markersize',14,'linewidth',2); % plot a bar to indicate the etimated correlation
+ylabel('Correlation(s1, s2)')
+axis([0 2 r-.1 r+.1 ]); % set the limits to the current axis
+set(gca, ...
+    'tickdir','out','ytick',[r-.1 r r+.1], ...
+    'xtick',[0 1 4],'ylim', [r-.1 r+.1], ...
     'box','off','fontsize',14)
 axis square
-
+h = legend({'Uncertainty on estimate', ...
+        'Real correlation', ...
+        'Estimated from sample'}, ...
+        'box','off','Location','NorthEastOutside');
