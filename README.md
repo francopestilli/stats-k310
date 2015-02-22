@@ -1,6 +1,8 @@
 # Statistics Techniques
 ## PSY-K 310 Undergraduate Honors Class Spring 2015 
 #### Indiana University Bloomington, IN
+
+[![Join the chat at https://gitter.im/francopestilli/stats-k310](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/francopestilli/stats-k310?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
  
 Time: Monday and Wednesday 9:00AM – 10:00AM,
 Location: Room PY286 - Psychology Building, 1101 E 10th St Bloomington IN 47405
