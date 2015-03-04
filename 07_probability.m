@@ -1,7 +1,7 @@
 %% 07 Probability
 %
 % This tutorial covers:
-% (1) ways to compute probabilities form counts, how to 
+% (1) ways to compute probabilities from counts, how to 
 % (2) sampling from a small sample
 % (3) sampling from a large population
 % (4) Conditional probability
@@ -90,19 +90,26 @@ legend({'Data available in sample','Removed Data','Sampled values'},'box','off',
 %% Conditional probability (Dependence)
 % Dependence: What is the probability of drawing a 2 after drawing a 1?
 S = [1 2 3 4 5];
+clear y x
 
 % Let's compute the probabilities of drawing each number
-[y,x] = hist(S,S);
-p = y/length(S);
-
+binWidth = 1;
+bins = 1:binWidth:length(S);
+[y,x] = hist(S,bins);
+p = y/length(S)*binWidth;
+p1 = p(1);
 % Now we draw twice.
 % First we draw '1' then we compute the probability of drawing 2.
 S = S(2:end);
 
 % Let's compute the probabilities of drawing each number
-[y,x] = hist(S,S);
-p = y/length(S);
-P(2)
+binWidth = 1;
+bins = 2:binWidth:length(S);
+[y,x] = hist(S,bins);
+p = y/length(S)*binWidth;
+p2 = p(1);
+
+p2after1 = p1*p2;
 
 %% Dependence AND: What is the probability of drawing a 2 AND 1?
 S = [1 2 3 4 5];
@@ -116,8 +123,9 @@ p2 = p(2); % Probability of 2
 S = S([1 3:5]);
 [y,x] = hist(S,S);
 p = y/length(S);
+p1 = p(1);
 
-prob = p2 * p(1)
+prob = p2 * p1
 
 %% Dependence XOR: What is the probability of drawing a 2 OR 1?
 S = [1 2 3 4 5];
@@ -129,7 +137,7 @@ p = y/length(S);
 % We use the summation rule, the two events are mutually exclusive
 prob = p(2) + p(1)
 
-%% Independent OR: What is the probability of drawing a 2 AND 1?
+%% Independent OR: What is the probability of drawing a 2 OR 1?
 S = [1 2 3 4 5];
 
 % Let's compute the probabilities of drawing each number
@@ -164,7 +172,7 @@ bins = min(P):binWidth:max(P);
 % in each bin
 figure('name','Population distribution','color','w')
 subplot(1,2,1);
-bar(X,Y)
+bar(X,Y,'k')
 title('Population frequency distribution')
 set(gca,'tickdir','out', 'box','off')
 ylabel('Number of occurrences')
