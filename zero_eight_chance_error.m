@@ -101,7 +101,7 @@ m_sample2 = mean(sample1);
 plot(m_sample2,zeros(size(sample2)),'c^','markerfacecolor','c','markersize',12)
 
 % (A.3) To really evaluate the accuracy of the estimate of the mean from samples
-% of different size we woudl want to:
+% of different size we would want to:
 % (*)  Sample with a certain numerosity
 % (**) Compute the mean
 % (***)Repeat the process many times to evaluate how reliable the estimates
@@ -129,15 +129,15 @@ legend({'True mean of the population'},'box','off')
 
 %% (B.1) Box model.
 % This file is a function. You can see this by looking at the very first
-% line fo the file. It is defined there as a matlab 'function.'
+% line of the file. It is defined there as a matlab 'function.'
 % Functions allows to:
 % - A convenient way to be called over and over.
 % - They have inputs and outputs.
-% - They do not share computations or variable with the rest fo the MatLab
+% - They do not share computations or variables with the rest fo the MatLab
 %   environemnt.
 %
 % Below, at the end of this file we have difined another function. This
-% function called boxGamblingModel allows creating a model or similar ot
+% function called boxGamblingModel allows creating a model similar to
 % the ones introduced in Chapter 16 of the book (Freeman, Pisani, Purves,
 % Statistics 2007, 4th Edition).
 
@@ -152,6 +152,7 @@ legend({'True mean of the population'},'box','off')
 % The function returns some OUTPUTS:
 % drawnValues - This variables contains all the values drawn from the box.
 % box - The second output is the full 'box' created in the process.
+keyboard
 valuesInBox    = [1 2 3 4 5];
 numberOfValues = [2 2 2 2 2];
 numberOfDraws  = 3;
@@ -199,7 +200,7 @@ set(gca,'tickdir','out', 'box','off')
 
 %% (B.2) The expected value
 % The expected value for a sum of draws made at random with replacement
-% from a box equals: (number ofdraws) x (average of box)
+% from a box equals: (number of draws) x (average of box)
 %
 % We first set up a model for computing the expected value:
 valuesInBox    = [1 2 3 4 5 6]; % for example a 6-face dice 
@@ -228,7 +229,7 @@ set(gca,'tickdir','out', 'box','off')
 
 %% (B.2) The expected value and standard error
 % The expected value for a sum of draws made at random with replacement
-% from a box equals: (number ofdraws) x (average of box)
+% from a box equals: (number of draws) x (average of box)
 %
 % We first set up a model for computing the expected value:
 valuesInBox    = [1 2 3 4 5 6]; % for example a 6-face dice 
@@ -308,7 +309,7 @@ function [drawnValues, box] = boxGamblingModel(valuesInBox,numberOfValues,number
 % valuesInBox - these are all the available values in the box we are
 %               building, for example, [1 2 3].
 % numberOfValues - These are the number of repeated values. For example:
-%                  [3,5,2] woudl mean [1 1 1 2 2 2 2 2 3 3].
+%                  [3,5,2] would mean [1 1 1 2 2 2 2 2 3 3].
 % numberOfDraws - This indicates the number of times that we will draw out
 %                 of the box.
 %
