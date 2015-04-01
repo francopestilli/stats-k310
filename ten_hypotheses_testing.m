@@ -372,8 +372,8 @@ text(d_empirical,y(2)*0.95,txt,'FontSize',14)
 % The following lines show how to set up a parametric t-test using matlab.
 % This is out of scope for the present tutorial. 
 [h,pp] = ttest2(sa,sb);
-text2 = sprintf('\nH0 is true with %2.2f probability (parametric t-test)\n',pp);
-text(d_empirical,y(2)*0.9,txt,'FontSize',14)
+txt2 = sprintf('\nH0 is true with %2.2f probability (parametric t-test)\n',pp);
+text(d_empirical,y(2)*0.9,txt2,'FontSize',14)
 
 %% 3. Exploring a more complex dataset: two variables, one condition
 % Hereafter, we show an example of a slightly more complex data set.
