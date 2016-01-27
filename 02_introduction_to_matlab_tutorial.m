@@ -3,13 +3,13 @@
 % This tutorial will show how to define variables, create a (simulated)
 % data set, plot it.
 % 
-% Pestilli, Franco K310 Spring 2015 Indiana University Bloomington
+% Pestilli, Franco K310 Spring 2016 Indiana University Bloomington
 
 %% (1) Defining a variable in the work space.
 % Please copy and paste the following lines inside the matlab command
 % window. One at the time. Explore what changes int he workspace after each
 % operation.
-var = 2;         % We define a simple variable and assign an arbitrary value to it. 
+var  = 2;         % We define a simple variable and assign an arbitrary value to it. 
 var2 = [];       % We define a variable with no value.
 var2 = var+2;    % We perform a mathematical operation on the variable.
 prod = var2*var; % We perform a second operation on the variable. We multiply it by the first variable. 
@@ -47,7 +47,7 @@ prod(2,2)
 %  Matlab has many types of variables
 strings = 'this is a string of characters';
 vectors = [1 2 3];
-arrays = [1 2 3; 4 5 6; 7 8 9];
+arrays  = [1 2 3; 4 5 6; 7 8 9];
 
 %% (3) MatLab commands:
 % MatLab has many basic commands. Most of them perform mathematical
