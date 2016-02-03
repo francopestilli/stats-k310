@@ -7,7 +7,7 @@
 % - How to compute the standard deviation and use the corresponding matlab
 %   function.
 % 
-% Pestilli, Franco K310 Spring 2014 Indiana University Bloomington
+% Pestilli, Franco K310 Spring 2016 Indiana University Bloomington
 
 %% (0) Simulating data.
 % We create a vector of random data points. The values will be
@@ -66,7 +66,7 @@ set(gca,'tickdir','out', 'box','off','xlim',[-8 8], ...
 chirnd_data = chi2rnd(5,6000,1); % Please explore the help of this new function
 rnd_data    = 6+2*randn(6000,1); % Type: 'doc randn' for more information 
 
-% We plto the first sample, nto symmetric.
+% We plto the first sample, not symmetric.
 figure('name','Two histograms','color','w')
 subplot(2,1,1); % Subplot plots multiple axis in a single matlab figure
 [y,x] = hist(chirnd_data,60);
@@ -85,7 +85,7 @@ plot([m m],[20 20],'ro','markerfacecolor','r','markersize',10)
 m = median(chirnd_data);
 plot([m m],[15 15],'b^','markerfacecolor','b','markersize',10)
 
-% We plot the secodn sample, symmetric.
+% We plot the second sample, symmetric.
 subplot(2,1,2); % Subplot plots multiple axis in a single matlab figure
 [y,x] = hist(rnd_data,60);
 bar(x,y,'k')
@@ -184,3 +184,4 @@ set(gca,'xlim',[-3 3], 'tickdir','out', ...
     'xtick',[-2, 0, 2], ...
     'fontsize',20)
     
+% End
