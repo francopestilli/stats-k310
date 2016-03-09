@@ -10,17 +10,17 @@
 % Let's generate two samples rapresenting two variables drawn from gaussian
 % distributions. The two variables are correlated with eachother. 
 
-n = 30; % This is the size of our samples
+n = 10; % This is the size of our samples
 % We set a correlation level between the two samples.
 p = .75;  
 
 % We generate the two samples.
 u = randn(1,n);
 v = randn(1,n);
-m.s1  = 0; % mean deviation of the first sample
-m.s2  = 0; % mean deviation of the second sample
+m.s1  = 5.5; % mean deviation of the first sample
+m.s2  = 6; % mean deviation of the second sample
 sd.s1 = 1; % standard deviation of the first sample
-sd.s2 = 1; % standard deviation of the second sample
+sd.s2 = 1.2; % standard deviation of the second sample
 s1 = sd.s1 * u + m.s1;
 s2 = sd.s2 * (p * u + sqrt(1 - p^2) * v) + m.s2;
 
@@ -52,8 +52,8 @@ figure('name','Two correlated variables','color','w')
 % to plot(s1,s2,'bo')
 subplot(1,2,1)
 scatter(s1,s2); 
-ylabel('Values in variable 2','fontsize',14)
-xlabel('Values in variable 1','fontsize',14)
+ylabel('Height of sons (feet)','fontsize',14)
+xlabel('Height pf fathers (feet)','fontsize',14)
 
 % We display the simulted and computed correlations at 80% the max y-value.
 y = get(gca,'yLim');
@@ -61,7 +61,8 @@ y = get(gca,'yLim');
 % on a plot. try doc text.m 
 text(0,y(2)-.2, ...
     sprintf('Simulated %2.2f\nEstimated %2.2f\n',p,r),'fontsize',14)
-set(gca,'tickdir','out','ytick',[-1 0 1],'xtick',[-1 0 1])
+set(gca,'ylim', [2 8],'xlim', [2 8], 'tickdir','out', ...
+        'ytick',[2 4 6 8],'xtick',[2 4 6 8])
 axis square
 
 %% 3. Error bars on the correlation coefficient using bootstrap.
