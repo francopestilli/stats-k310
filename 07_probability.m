@@ -7,7 +7,7 @@
 % (4) Conditional probability
 % (5) Addtition and multiplication rule
 %
-% Copyright Franco Pestilli Indiana University Spring 2015 K310
+% Copyright Franco Pestilli Indiana University Spring 2016 K310
 
 %% Probability from a sample
 % Let's take a look at what happens when we draw from a data smaple
@@ -61,14 +61,13 @@ sample1 = randsample(S,n,replacement);
 % We plot the sample on top of the distribution.
 figure('name','Sample')
 subplot(1,2,1)
-plot(S,zeros(size(S)),'ro','linewidth',2)
+plot(x,y,'ro-','linewidth',2)
 hold on 
-y = 0.5*linspace(1,size(sample1,2),size(sample1,2)); % We prepare a y that changes incremetally 
-plot(sample1,y,'b+','linewidth',2)
+plot(sample1,zeros(size(sample1)),'b+','linewidth',2)
 ylabel('Arbitrary')
 xlabel('Data value')
 axis square
-legend({'Data available in sample','Sampled values'},'box','off','location','northeastoutside')
+%legend({'Data available in sample','Sampled values'},'box','off','location','northeastoutside')
 
 % (2) Drawing without replacement
 % Next we will draw 10 data points without replacement
@@ -77,15 +76,13 @@ sample2 = randsample(S,n,replacement);
 
 % We make a plot.
 subplot(1,2,2)
-plot(S,zeros(size(S)),'ro','linewidth',2)
+plot(x,y,'ro-','linewidth',2)
 hold on 
-plot(sample2,zeros(size(sample2)),'ko','linewidth',2)
-y = 0.5*linspace(1,size(sample2,2),size(sample2,2)); % We prepare a y that changes incremetally 
-plot(sample2,y,'b+','linewidth',2)
+plot(sample2,size(sample2),'b+','linewidth',2)
 ylabel('Arbitrary')
 xlabel('Data value')
 axis square
-legend({'Data available in sample','Removed Data','Sampled values'},'box','off','location','northeastoutside')
+%legend({'Data available in sample','Removed Data','Sampled values'},'box','off','location','northeastoutside')
 
 %% Conditional probability (Dependence)
 % Dependence: What is the probability of drawing a 2 after drawing a 1?
@@ -104,7 +101,7 @@ S = S(2:end);
 
 % Let's compute the probabilities of drawing each number
 binWidth = 1;
-bins = 2:binWidth:length(S);
+bins = min(S):binWidth:max(S);
 [y,x] = hist(S,bins);
 p = y/length(S)*binWidth;
 p2 = p(1);
@@ -153,7 +150,7 @@ prob = p(2) * p(1)
 
 N  = 10000;
 mu = 100; % Mean fo the population
-sd = 10; % Standard deviation of the population
+sd = 10;  % Standard deviation of the population
 P  = mu + sd * randn(N,1);
 
 % Let's compute the histogram of the population and trasform the population
@@ -207,10 +204,10 @@ sample1 = randsample(P,n,replacement);
 % We plot the sample on top of the distribution.
 subplot(1,2,1)
 hold on  % Please not one 'hold on' per plot, is this necessary
-plot(sample1,zeros(size(sample1)),'ro')
+plot(sample1,zeros(size(sample1)),'bo')
 subplot(1,2,2)
 hold on  % Please not one 'hold on' per plot, is this necessary
-plot(sample1,zeros(size(sample1)),'ro')
+plot(sample1,zeros(size(sample1)),'bo')
 
 % (2) Drawing without replacement
 % Next we will draw 10 data points without replacement
@@ -220,7 +217,7 @@ sample2 = randsample(P,n,replacement);
 % We make a plot.
 subplot(1,2,1)
 hold on  % Please not one 'hold on' per plot, is this necessary
-plot(sample2,zeros(size(sample2)),'b+');
+plot(sample2,zeros(size(sample2)),'g+','markersize',15);
 subplot(1,2,2)
 hold on  % Please not one 'hold on' per plot, is this necessary
-plot(sample2,zeros(size(sample2)),'b+');
+plot(sample2,zeros(size(sample2)),'g+','markersize',15);
