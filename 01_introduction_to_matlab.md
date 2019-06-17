@@ -12,7 +12,7 @@ http://www.mathworks.com/videos/introducing-matlab-fundamental-classes-data-type
 The MatLab documentation is accessible online fro free: http://www.mathworks.com/help/matlab/
 
 Mathworks also hosts a portal called Matlabcentral, where files and questions can be submitted to a comunity of users: http://www.mathworks.com/matlabcentral/
-It is foten helpful to find that many of the problems we might encounter have been previosuly solved by other individuals.
+It is often helpful to find that many of the problems we might encounter have been previosuly solved by other individuals.
 
 ### The MatLab environment 
 ####Command line 
